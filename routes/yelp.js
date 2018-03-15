@@ -9,8 +9,32 @@ const yelp = require('yelp-fusion');
 
 const apiKey = keys.yelpAPIKey;
 
-router.get('/', (req, res) => {
-    res.send('This the yelp index route!');
+router.get('/', async (req, res) => {
+    // res.send('This the yelp index route!');
+    //get search request from req.params.city : ?city=[cityname]
+    //and convert to lowercase
+    const location = 'palatine, il';
+
+    //create search request using location
+    const searchRequest = {
+        categories: 'bars',
+        location
+    };
+
+    //intialize search client
+    const client = yelp.client(apiKey);
+
+    //make search
+    const response = await client.search(searchRequest)
+        .catch(err => {
+            debug(err);
+        });
+    
+    const results = response.jsonBody.businesses;
+    // const prettyJson = JSON.stringify(results);
+    
+    res.send(results);
+
 });
 
 // const searchRequest = {
