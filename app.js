@@ -10,6 +10,7 @@ const keys = require('./config/keys');
 
 //require route handlers
 const index = require('./routes/index');
+const yelp = require('./routes/yelp');
 const users = require('./routes/users');
 
 
@@ -18,11 +19,11 @@ const users = require('./routes/users');
 // ESTABLISH DB CONNECTION                                  //
 //////////////////////////////////////////////////////////////
 //uncomment to use database
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
 
 //seed sample data
-const seed = require('./utils/seed');
-seed();
+// const seed = require('./utils/seed');
+// seed();
 
 //////////////////////////////////////////////////////////////
 // CREATE EXPRESS APP                                       //
@@ -46,14 +47,15 @@ app.use(
 // SETUP PASSPORT                                           //
 //////////////////////////////////////////////////////////////
 // uncomment to following lines to use passport
-app.use(passport.initialize());
-app.use(passport.session());
-require('./auth/passportConfig');
+// app.use(passport.initialize());
+// app.use(passport.session());
+// require('./auth/passportConfig');
 
 //////////////////////////////////////////////////////////////
 // SETUP ROUTE HANDLERS                                     //
 //////////////////////////////////////////////////////////////
 app.use('/api', index);
+app.use('/api/yelp', yelp);
 app.use('/api/users', users);
 
 //////////////////////////////////////////////////////////////

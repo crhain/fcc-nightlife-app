@@ -23,6 +23,10 @@ Once you've finished implementing these user stories, click the "I've completed 
 TEMPLATE INSTRUCTIONS
 ===========================================================================
 
+Access Dev server on: localhost:5000
+Access Dev client on: localhost:3000
+
+
 ## Table of Contents
 
 - [Express](#Express)
