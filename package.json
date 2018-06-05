@@ -14,6 +14,7 @@
     "start": "node ./bin/www",
     "server": "nodemon ./bin/www",
     "client": "npm run start --prefix client",
+    "test": "mocha lib/**/**.spec.js",
     "dev": "run-p server client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
@@ -33,7 +34,9 @@
     "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "debug": "^3.1.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.17.1",
     "npm-run-all": "^4.1.2"
   }
